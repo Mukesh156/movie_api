@@ -1,7 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const bodyParser = require('body-parser'),
-
+const bodyParser = require("body-parser");
 const app = express();
 
 //morgan
@@ -9,7 +8,6 @@ app.use(morgan("common"));
 
 //error handling
 app.use(bodyParser.json());
-
 
 let topMovies = [
   {
