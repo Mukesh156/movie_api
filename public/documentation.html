@@ -44,10 +44,10 @@
       </tr>
 
       <tr>
-        <td>Return data about a genre by title.</td>
+        <td>Return data about a genre description by genre name.</td>
         <td>"/movies/genre/:genreName"</td>
         <td>GET</td>
-        <td>Returns a JSON data with movies of that genre.</td>
+        <td>Returns a JSON data with a description of that genre.</td>
       </tr>
 
       <tr>
@@ -66,13 +66,13 @@
 
       <tr>
         <td>Allow users to add a movie to their list of favorites</td>
-        <td>"users/:id/:movieTitle"</td>
+        <td>"/users/:name/:favouriteMovies/:newfavouriteMovies"</td>
         <td>POST</td>
         <td>Returns a text confirming which movie was added successfully.</td>
       </tr>
       <tr>
         <td>Allow users to remove a movie from their list of favorites</td>
-        <td>"/users/:id:/:movieTitle"</td>
+        <td>"/users/:name/:favouriteMovies"</td>
         <td>DELETE</td>
         <td>Returns a text confirming which movie was removed successfully.</td>
       </tr>
