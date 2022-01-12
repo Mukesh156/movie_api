@@ -14,12 +14,12 @@ let users = [
   {
     id: 1,
     name: "Nani",
-    favoriteMovies: [],
+    favouriteMovies: [],
   },
   {
     id: 2,
     name: "Prashanth",
-    favoriteMovies: ["The Dark Knight"],
+    favouriteMovies: ["The Dark Knight"],
   },
 ];
 
@@ -52,48 +52,38 @@ app.put("/users/:id", (req, res) => {
 });
 
 //Allow users to add a movie to their list of favorites
-app.post("users/:id/:movieTitle", (req, res) => {
-  const { id, movieTitle } = req.params;
-
-  let user = users.find((user) => user.id == id);
+app.put("/users/:name/:favouriteMovies/:newfavouriteMovies", (req, res) => {
+  let user = users.find((user) => {
+    return user.name === req.params.name;
+  });
 
   if (user) {
-    user.favoriteMovies.push(movieTitle);
-    res.status(200).send(`${movieTitle} has been added to user ${id}'s array`);
+    user.favouriteMovies.push(req.params.newfavouriteMovies);
+    res.send(
+      req.params.newfavouriteMovies + " was added to your list of favourites"
+    );
   } else {
-    res.status(400).send("no such user");
+    res.status(404).send("User with that name not found");
   }
 });
 
 //Allow users to remove a movie from their list of favorites
-app.delete("/users/:id:/:movieTitle", (req, res) => {
-  const { id, movieTitle } = req.params;
-
-  let user = users.find((user) => user.id == id);
+app.delete("/users/:name/:favouriteMovies", (req, res) => {
+  let user = users.find((user) => {
+    return user.name === req.params.name;
+  });
 
   if (user) {
-    user.favoriteMovies = user.favoriteMovies.filter(
-      (title) => title !== movieTitle
+    let favouriteMovies = user.favouriteMovies;
+    let index = favouriteMovies.indexOf(req.params.favouriteMovies);
+    if (index > -1) {
+      favouriteMovies.splice(index, 1);
+    }
+    res.send(
+      req.params.favouriteMovies + " was removed from the list of favourites"
     );
-    res
-      .status(200)
-      .send(`${movieTitle} has been removed from user ${id}'s array`);
   } else {
-    res.status(400).send("no such user");
-  }
-});
-
-//Allow existing user to deregister
-app.delete("/users/:id", (req, res) => {
-  const { id } = req.params;
-
-  let user = users.find((user) => user.id == id);
-
-  if (user) {
-    users = users.filter((user) => user.id != id);
-    res.status(200).send(`user ${id} has been deleted`);
-  } else {
-    res.status(400).send("no such user");
+    res.status(404).send("Username not found");
   }
 });
 
@@ -274,7 +264,7 @@ app.get("/movies/:title", (req, res) => {
   }
 });
 
-//Return data about a genre by title
+//Return data about a genre description by genre name
 app.get("/movies/genre/:genreName", (req, res) => {
   const { genreName } = req.params;
   const genre = movies.find((movie) => movie.Genre.Name === genreName).Genre;
