@@ -21,12 +21,17 @@
         <th>URL</th>
         <th>HTTP Method</th>
         <th>Response</th>
+        <th>Examples</th>
       </tr>
       <tr>
         <td>Return a list of ALL movies to the user</td>
         <td>'/movies'</td>
         <td>GET</td>
         <td>Returns a JSON list of movies.</td>
+        <td>
+          Get the list of all movies with data about Title, Description, Genre,
+          Actors, Image path etc
+        </td>
       </tr>
 
       <tr>
@@ -34,53 +39,96 @@
         <td>'/movies/:title'</td>
         <td>GET</td>
         <td>Returns a JSON data about a specific movie.</td>
+        <td>
+          <p>
+            "Genre": "Name": "Action film", "Description": "Action film is a
+            film genre in which the protagonist or protagonists are thrust into
+            a series of events that typically include violence, extended
+            fighting, physical feats, rescues and frantic chases.
+          </p>
+
+          <p>
+            "Director": "Name": "Christopher Nolan", "Bio": " Christopher Edward
+            Nolan is a British-American film director, producer, and
+            screenwriter. "Birth": "1970"
+          </p>
+          <p>"Actors": [],</p>
+          <p>
+            "_id": "61ef150ff8ea076f226351c4", "Title": "The film follows a
+            secret agent who learns to manipulate the flow of time to prevent an
+            attack from the future that threatens to annihilate the present
+            world.", "ImagePath":
+            "https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_.jpg",
+            "Featured": true
+          </p>
+        </td>
       </tr>
 
       <tr>
         <td>Return data about a director by name</td>
-        <td>"/movies/directors/:directorName"</td>
+        <td>"/directors/:directorName"</td>
         <td>GET</td>
         <td>Returns a JSON data about the director.</td>
+        <td>
+          "Name": "Todd Phillips", "Bio": "Todd Phillips is an American
+          filmmaker and occasional actor." "Birth": "1970"
+        </td>
       </tr>
 
       <tr>
         <td>Return data about a genre description by genre name.</td>
-        <td>"/movies/genre/:genreName"</td>
+        <td>"/genres/:genre"</td>
         <td>GET</td>
         <td>Returns a JSON data with a description of that genre.</td>
+        <td>
+          "Name": "drama", "Description": "In film and television, drama is a
+          category of narrative fiction (or semi-fiction) intended to be more
+          serious than humorous in tone"
+        </td>
       </tr>
 
       <tr>
         <td>Allow new users to register</td>
-        <td>/users/:newUser</td>
+        <td>"/users"</td>
         <td>POST</td>
         <td>Will add new user to JSON object.</td>
+        <td>
+          Username: "Prudhvi", Password: "Prudhvi123", Email:
+          "prasad@gmail.com", Birthday: "10-10-2008", favouriteMovies: [],
+        </td>
       </tr>
 
       <tr>
         <td>Allow users to update their user information</td>
-        <td>"/users/:id"</td>
+        <td>"/users/:Username"</td>
         <td>PUT</td>
         <td>Returns the data fields that was updated by the user.</td>
+        <td>
+          Username: NewUserName, password: Newpassword, email: New email,
+          Birthday: New birthday
+        </td>
       </tr>
 
       <tr>
         <td>Allow users to add a movie to their list of favorites</td>
-        <td>"/users/:name/:favouriteMovies/:newfavouriteMovies"</td>
-        <td>PUT</td>
+        <td>"/users/:Username/movies/:MovieID"</td>
+        <td>POST</td>
         <td>Returns a text confirming which movie was added successfully.</td>
+        <td>MovieID is added to the list of favouriteMovies</td>
       </tr>
       <tr>
         <td>Allow users to remove a movie from their list of favorites</td>
-        <td>"/users/:name/:favouriteMovies"</td>
+        <td>"/users/:username/favouriteMovies/:movieID"</td>
         <td>DELETE</td>
         <td>Returns a text confirming which movie was removed successfully.</td>
+        <td>MovieID is removed to the list of favouriteMovies</td>
       </tr>
       <tr>
         <td>Allow existing user to deregister</td>
-        <td>/users/:deleteUser</td>
+        <td>"/users/:Username"</td>
         <td>DELETE</td>
         <td>Return a text confirming that the user was deleted.</td>
+        <td>Prudhvi was deleted</td>
       </tr>
     </table>
   </body>
