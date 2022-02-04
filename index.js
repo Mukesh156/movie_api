@@ -16,13 +16,6 @@ mongoose.connect("mongodb://0.0.0.0:27017/myFlixDB", {
   useUnifiedTopology: true,
 });
 
-// Create a reference to the port on the hosted server
-const port = process.env.PORT || 5500;
-
-// Set up the server
-app.listen(port, "0.0.0.0", () => {
-  console.log("The server is listening on port " + port);
-});
 //morgan
 app.use(morgan("common"));
 
@@ -289,6 +282,14 @@ app.use((err, req, res, next) => {
 });
 
 // listen for requests
-app.listen(5500, () => {
-  console.log("Your app is listening on port 0.0.0.0");
+// Create a reference to the port on the hosted server
+const port = process.env.PORT || 5500;
+
+// Set up the server
+app.listen(port, "0.0.0.0", () => {
+  console.log("The server is listening on port " + port);
 });
+
+// app.listen(5500, () => {
+//   console.log("Your app is listening on port 0.0.0.0");
+// });
