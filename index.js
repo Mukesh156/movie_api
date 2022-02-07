@@ -11,7 +11,12 @@ const users = Models.User;
 
 // mongoose.connect('mongodb://localhost:5500/dbname', { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect("mongodb://0.0.0.0:27017/myFlixDB", {
+// mongoose.connect("mongodb://0.0.0.0:27017/myFlixDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+
+mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -290,6 +295,6 @@ app.listen(port, "0.0.0.0", () => {
   console.log("The server is listening on port " + port);
 });
 
-// app.listen(5500, () => {
-//   console.log("Your app is listening on port 0.0.0.0");
-// });
+app.listen(5500, () => {
+  console.log("Your app is listening on port 0.0.0.0");
+});
