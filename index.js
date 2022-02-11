@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const app = express();
 const mongoose = require("mongoose");
+require("dotenv").config();
+
 const Models = require("./models.js");
 uuid = require("uuid");
 
