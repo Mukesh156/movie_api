@@ -31,12 +31,12 @@ mongoose
     usenewurlparser: true,
     useunifiedtopology: true,
   })
-  .then(() => {
-    console.log("Successfully connected ");
-  })
-  .catch((error) => {
-    console.log(`can not connect to database, ${error}`);
-  });
+  // .then(() => {
+  //   console.log("Successfully connected ");
+  // })
+  // .catch((error) => {
+  //   console.log(`can not connect to database, ${error}`);
+  // });
 
 //morgan
 app.use(morgan("common"));
