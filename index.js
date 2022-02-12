@@ -1,5 +1,4 @@
-const dotenv = require("dotenv"); //require dotenv package
-dotenv.config({ path: "./config.env" }); //import config.env file
+require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -18,25 +17,25 @@ const users = Models.User;
 //   useUnifiedTopology: true,
 // });
 
-// mongoose.connect(process.env.CONNECTION_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
+mongoose.connect(process.env.CONNECTION_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// const DB = process.env.DATABASE;
+// const Port = process.env.PORT;
+
+// mongoose
+//   .connect(DB, {
+//     usenewurlparser: true,
+//     useunifiedtopology: true,
+//   })
+// .then(() => {
+//   console.log("Successfully connected ");
+// })
+// .catch((error) => {
+//   console.log(`can not connect to database, ${error}`);
 // });
-
-const DB = process.env.DATABASE;  
-const Port = process.env.PORT;
-
-mongoose
-  .connect(DB, {
-    usenewurlparser: true,
-    useunifiedtopology: true,
-  })
-  // .then(() => {
-  //   console.log("Successfully connected ");
-  // })
-  // .catch((error) => {
-  //   console.log(`can not connect to database, ${error}`);
-  // });
 
 //morgan
 app.use(morgan("common"));
@@ -312,6 +311,6 @@ app.listen(port, "0.0.0.0", () => {
   console.log("The server is listening on port " + port);
 });
 
-app.listen(5500, () => {
-  console.log("Your app is listening on port 0.0.0.0");
-});
+// app.listen(5500, () => {
+//   console.log("Your app is listening on port 0.0.0.0");
+// });
