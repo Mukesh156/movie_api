@@ -290,7 +290,7 @@ app.use((err, req, res, next) => {
 
 // listen for requests
 // Create a reference to the port on the hosted server
-const port = process.env.PORT || 22861;
+const port = process.env.PORT || 5500;
 
 //set up the server
 app.listen(port, "0.0.0.0", () => {
