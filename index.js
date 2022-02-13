@@ -9,6 +9,8 @@ uuid = require("uuid");
 
 const movies = Models.Movie;
 const users = Models.User;
+let mongouri = process.env.MONGO_URI;
+
 
 // mongoose.connect('mongodb://localhost:5500/dbname', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -17,25 +19,10 @@ const users = Models.User;
 //   useUnifiedTopology: true,
 // });
 
-mongoose.connect(process.env.CONNECTION_URI, {
+mongoose.connect(mongouri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-// const DB = process.env.DATABASE;
-// const Port = process.env.PORT;
-
-// mongoose
-//   .connect(DB, {
-//     usenewurlparser: true,
-//     useunifiedtopology: true,
-//   })
-// .then(() => {
-//   console.log("Successfully connected ");
-// })
-// .catch((error) => {
-//   console.log(`can not connect to database, ${error}`);
-// });
 
 //morgan
 app.use(morgan("common"));
@@ -311,6 +298,6 @@ app.listen(port, "0.0.0.0", () => {
   console.log("The server is listening on port " + port);
 });
 
-// app.listen(5500, () => {
-//   console.log("Your app is listening on port 0.0.0.0");
-// });
+app.listen(5500, () => {
+  console.log("Your app is listening on port 0.0.0.0");
+});
