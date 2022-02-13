@@ -11,7 +11,6 @@ const movies = Models.Movie;
 const users = Models.User;
 let mongouri = process.env.MONGO_URI;
 
-
 // mongoose.connect('mongodb://localhost:5500/dbname', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // mongoose.connect("mongodb://0.0.0.0:27017/myFlixDB", {
@@ -291,7 +290,7 @@ app.use((err, req, res, next) => {
 
 // listen for requests
 // Create a reference to the port on the hosted server
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 22861;
 
 //set up the server
 app.listen(port, "0.0.0.0", () => {
