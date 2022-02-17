@@ -31,7 +31,7 @@ passport.use(
           return callback(null, false, { message: "Incorrect password." });
         }
 
-        console.log("finished");
+        console.log("finished", user);
         return callback(null, user);
       });
     }
@@ -50,6 +50,7 @@ passport.use(
           return callback(null, user);
         })
         .catch((error) => {
+          console.log("error", error)
           return callback(error);
         });
     }
