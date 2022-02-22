@@ -37,6 +37,18 @@ require("./passport");
 const cors = require("cors");
 let allowedOrigins = ["http://localhost:5500", "http://testsite.com"];
 
+// app.use((req, res, next) => {
+//   console.log(req.query);
+//   users.findOne({ Username: req.query.Username }, (error, user) => {
+//     console.log(error, user);
+//     if (user) {
+//       return next(user);
+//     } else {
+//       throw Error("unatuthorized");
+//     }
+//   });
+// });
+
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -72,6 +84,18 @@ app.get(
       });
   }
 );
+
+// app.get("/movies_myflix", (req, res) => {
+//   movies
+//     .find()
+//     .then((movies) => {
+//       res.status(201).json(movies);
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//       res.status(500).send("Error: " + error);
+//     });
+// });
 
 // Return data about a genre by name
 app.get(
